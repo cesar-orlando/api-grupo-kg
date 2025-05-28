@@ -7,6 +7,7 @@ import tableRoutes from "./routes/tables.routes";
 import recordRoutes from "./routes/record.routes";
 import iconsRoutes from "./routes/icons.routes";
 import iaRoutes from "./routes/ia-config.routes";
+import elevenlabsRoutes from "./routes/elevenlabs.routes";
 
 const app = express();
 
@@ -23,6 +24,8 @@ app.use("/api/records", recordRoutes);
 app.use("/api/icons", iconsRoutes);
 //Ruta para configurar IA
 app.use("/api/ia-config", iaRoutes);
+
+app.use("/api/elevenlabs", elevenlabsRoutes);
 
 app.get("/", (req, res) => {
     res.json({

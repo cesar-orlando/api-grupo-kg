@@ -177,3 +177,87 @@ export const deleteRecord = async (req: Request, res: Response): Promise<void> =
     res.status(500).json({ message: "Error al eliminar el registro." });
   }
 };
+
+export const searchProperties = async (req: Request, res: Response): Promise<any> => {
+  try {
+    const { zona } = req.body;
+
+    if (!zona) {
+      return res.status(400).json({ response: "Por favor indica la zona de interés del cliente." });
+    }
+
+    const regex = new RegExp(zona, "i");
+
+    // Buscar en registros dinámicos de la tabla "propiedades"
+    const record = await DynamicRecord.findOne({
+      tableSlug: "propiedades",
+      customFields: {
+        $elemMatch: {
+          key: "zona",
+          value: { $regex: regex }
+        }
+      }
+    });
+
+    if (!record) {
+      return res.status(200).json({ response: `No encontré propiedades en la zona de ${zona}. ¿Te gustaría que te comparta otras opciones cercanas por WhatsApp?` });
+    }
+
+    const getField = (key: string) =>
+      record.customFields.find((f: any) => f.key === key)?.value || "no especificado";
+
+    const titulo = getField("titulo");
+    const precio = getField("precio");
+    const recamaras = getField("recamaras");
+    const banos = getField("banos");
+    const zonaDetectada = getField("zona");
+
+    const respuesta = `Tenemos una propiedad en ${zonaDetectada}: ${titulo}, con ${recamaras} recámaras y ${banos} baños. El precio es de ${precio}. ¿Te gustaría que te mande la ficha técnica por WhatsApp?`;
+
+    return res.status(200).json({ response: respuesta });
+  } catch (error) {
+    console.error("❌ Error en searchProperties:", error);
+    return res.status(500).json({ response: "Tuvimos un problema al buscar la propiedad. Intenta más tarde." });
+  }
+};
+
+export const searchCommission = async (req: Request, res: Response): Promise<any> => {
+  try {
+    const { zona } = req.body;
+
+    if (!zona) {
+      return res.status(400).json({ response: "Por favor indica la zona para verificar la comisión." });
+    }
+
+    const regex = new RegExp(zona, "i");
+
+    const record = await DynamicRecord.findOne({
+      tableSlug: "propiedades",
+      customFields: {
+        $elemMatch: {
+          key: "zona",
+          value: { $regex: regex }
+        }
+      }
+    });
+
+    if (!record) {
+      return res.status(200).json({ response: `No encontré propiedades en la zona de ${zona}.` });
+    }
+
+    const getField = (key: string) =>
+      record.customFields.find((f: any) => f.key === key)?.value || "";
+
+    const comision = getField("comision_compartida");
+    const titulo = getField("titulo");
+
+    const respuesta = comision && comision.toLowerCase() !== "no"
+      ? `Sí, la propiedad "${titulo}" en ${zona} comparte comisión del ${comision}.`
+      : `La propiedad "${titulo}" en ${zona} no está disponible para compartir comisión.`
+
+    return res.status(200).json({ response: respuesta });
+  } catch (error) {
+    console.error("❌ Error en searchCommission:", error);
+    return res.status(500).json({ response: "Ocurrió un error al verificar la comisión. Intenta más tarde." });
+  }
+};

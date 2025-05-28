@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createRecord, getRecordsByTable, updateRecord, deleteRecord, addCustomField, updateCustomField, deleteCustomField } from "../controllers/record.controller";
+import { createRecord, getRecordsByTable, updateRecord, deleteRecord, addCustomField, updateCustomField, deleteCustomField, searchProperties, searchCommission } from "../controllers/record.controller";
 
 const router = Router();
 
@@ -18,5 +18,8 @@ router.put("/update/:id", updateRecord);
 
 // Eliminar registro
 router.delete("/delete/:id", deleteRecord);
+
+router.post("/search-properties", searchProperties);
+router.post("/search-commission", searchCommission);
 
 export default router;
