@@ -28,15 +28,13 @@ app.use("/api/ia-config", iaRoutes);
 app.use("/api/elevenlabs", elevenlabsRoutes);
 
 app.get("/", (req, res) => {
-    res.json({
-      status: "ok",
-      code: 200,
-      message: "Sistema operativo: Milkasa Node Engine v2.4",
-      uptime: `${Math.floor(process.uptime())}s`,
-      trace: "XJ-85::Verified",
-    });
+  res.json({
+    status: "ok",
+    code: 200,
+    message: "Sistema operativo: Milkasa Node Engine v2.4",
+    uptime: `${Math.floor(process.uptime())}s`,
+    trace: "XJ-85::Verified",
   });
-  
-
+});
 
 export default app;

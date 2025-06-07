@@ -1,0 +1,22 @@
+2025/06/06-19:53:23.228 f303 Reusing MANIFEST /Users/orlando/Documents/GitHub/KG/api-grupo-kg/.wwebjs_auth/session-grupokg/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/06/06-19:53:23.228 f303 Recovering log #301
+2025/06/06-19:53:23.281 f303 Reusing old log /Users/orlando/Documents/GitHub/KG/api-grupo-kg/.wwebjs_auth/session-grupokg/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000301.log 
+2025/06/06-19:53:24.808 f303 Level-0 table #309: started
+2025/06/06-19:53:24.824 f303 Level-0 table #309: 821248 bytes OK
+2025/06/06-19:53:24.842 f303 Delete type=0 #301
+2025/06/06-19:53:24.844 f303 Manual compaction at level-0 from '\x00-\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00.\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/06/06-19:53:25.900 f303 Compacting 1@1 + 6@2 files
+2025/06/06-19:53:25.946 f303 Generated table #310@1: 74014 keys, 2228891 bytes
+2025/06/06-19:53:25.985 f303 Generated table #311@1: 38263 keys, 2204197 bytes
+2025/06/06-19:53:26.002 f303 Generated table #312@1: 3367 keys, 2139384 bytes
+2025/06/06-19:53:26.036 f303 Generated table #313@1: 34586 keys, 2202649 bytes
+2025/06/06-19:53:26.067 f303 Generated table #314@1: 57658 keys, 1383244 bytes
+2025/06/06-19:53:26.067 f303 Compacted 1@1 + 6@2 files => 10158365 bytes
+2025/06/06-19:53:26.075 f303 compacted to: files[ 0 0 5 0 0 0 0 ]
+2025/06/06-19:53:26.075 f303 Delete type=2 #303
+2025/06/06-19:53:26.075 f303 Delete type=2 #306
+2025/06/06-19:53:26.075 f303 Delete type=2 #305
+2025/06/06-19:53:26.075 f303 Delete type=2 #304
+2025/06/06-19:53:26.075 f303 Delete type=2 #309
+2025/06/06-19:53:26.075 f303 Delete type=2 #294
+2025/06/06-19:53:26.075 f303 Delete type=2 #287

@@ -93,6 +93,7 @@ export const deleteCustomField = async (req: Request, res: Response): Promise<vo
 
 // 🔹 Crear nuevo registro dinámico
 export const createRecord = async (req: Request, res: Response): Promise<void> => {
+  console.log("entr aqui");
   try {
     const { tableSlug, customFields } = req.body;
 
@@ -111,7 +112,8 @@ export const createRecord = async (req: Request, res: Response): Promise<void> =
     res.status(201).json(newRecord);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error al crear el registro." });
+    console.log("que pasa aqui");
+    res.status(500).json({ message: "Error al crear el registro, " + error });
   }
 };
 

@@ -11,7 +11,7 @@ const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/clientesdb
 async function main() {
   await connectDB(MONGO_URI);
   // 🚀 Iniciar WhatsApp Web Bot
-  // startWhatsappBot();
+  startWhatsappBot();
   app.listen(PORT, () => {
     console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
   });
