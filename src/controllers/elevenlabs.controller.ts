@@ -15,11 +15,11 @@ export const logLead = async (req: Request, res: Response) => {
 
     await createRecord(req, res);
 
-    res.status(200).json({ message: "Lead guardado en tabla dinámica." });
+    res.status(200).json({ success: true });
     return;
   } catch (error) {
-    console.error("❌ Error al registrar lead:", error);
-    res.status(500).json({ message: "Error al guardar el lead" });
+    // console.error("❌ Error al registrar lead:", error);
+    res.status(500).json({ success: false });
     return;
   }
 };
